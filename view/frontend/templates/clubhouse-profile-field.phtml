@@ -1,0 +1,26 @@
+<?php
+
+
+$viewModel = $block->getViewModel();
+$isRequired = $viewModel->isRequired();
+?>
+<?php if (!$viewModel->isHidden()) { ?>
+
+    <fieldset class="fieldset create account">
+        <legend class="legend"><span><?= /* @noEscape */ __('Additional Information') ?></span></legend><br>
+            <div class="field clubhouse_profile <?= /* @noEscape */ ($isRequired) ?'required' : ''?>">
+                <label class="label" for="clubhouse_profile">
+                    <span><?= $block->escapeHtml(__('Clubhouse Profile')) ?></span>
+                </label>
+                <div class="control">
+                    <input type="text" name="clubhouse_profile" id="clubhouse_profile"
+                           value="<?= /* @noEscape */ $viewModel->getClubhouseUrl() ?>"
+                           title="<?= /* @noEscape */ __('Clubhouse Profile') ?>"
+                           class="input-text validate-length maximum-length-16"
+                           data-validate="<?= $isRequired ? '{required:true}': '{}'?>"
+                           autocomplete="off">
+                </div>
+            </div>
+    </fieldset>
+
+<?php } ?>
